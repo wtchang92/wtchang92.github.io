@@ -581,7 +581,8 @@ Hero
     position: relative;
     padding: 20px 0 60px 0;
     min-height: 800px;
-    background: url('../img/shoot2.jpg') no-repeat center center ;
+    background: url('../img/shoot2.jpg') no-repeat center center;
+
     vertical-align:top;
     background-size: cover;
     color: #fff;
