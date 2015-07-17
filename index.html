@@ -129,7 +129,7 @@ max-height:100%;" id = "zoom" data-magnify-src="img/shirt.png">
                 <div class="col-lg-8 col-lg-offset-2">
                     <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
                     <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-                    <form name="sentMessage" id="contactForm" novalidate>
+                    <form name="sentMessage" id="contactForm" novalidate action="MAILTO:bksevenoneeight@gmail.com" method="post" enctype="text/plain">
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Name</label>
@@ -408,14 +408,32 @@ $(document).ready(function() {
                 firstName = name.split(' ').slice(0, -1).join(' ');
             }
             $.ajax({
-                url: "././mail/contact_me.php",
-                type: "POST",
-                data: {
-                    name: name,
-                    phone: phone,
-                    email: email,
-                    message: message
-                },
+
+            	type: 'POST',
+      url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+      data: {
+        'key': 'v2nleCeKxO5a44RrE9c17Q',
+        'message': {
+          'from_email': email,
+          'from_name': name,
+          'to': [
+              {
+                'email': 'bksevenoneeight@gmail.com',
+                'name': 'RECIPIENT NAME (OPTIONAL)',
+                'type': 'to'
+              }
+            ],
+          'autotext': 'true',
+          'subject': 'test email',
+          'html': 'YOUR EMAIL CONTENT HERE! YOU CAN USE HTML!'
+        }
+      },
+
+
+
+
+
+
                 cache: false,
                 success: function() {
                     // Enable button & show success message
